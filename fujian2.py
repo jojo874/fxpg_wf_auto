@@ -48,9 +48,6 @@ table.cell(1, 1).text = "漏洞名称"
 table.cell(1, 2).text = "是否整改"
 table.cell(1, 3).text = "未整改原因"
 
-# 设置第三行到第十行的第一列的内容
-
-
 
 for i in range(2, rows):
     table.cell(i, 0).text = str(i+1)
