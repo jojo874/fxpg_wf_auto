@@ -128,7 +128,6 @@ def create_doc_table(data):
     print("time_str====", time_str)
     db = pymysql.connect(host = '192.168.75.128', port=3306, user = 'zhangbo', password = '22', database = 'testdb')
     cur = db.cursor()
-    #sql = """select * from 3k where unit='潍坊市交通运输局' and host='10.80.13.62' order by system,host"""
     sql = """select count(unit) from 3k where unit='{}'""".format(data[0][1])
     cur.execute(sql)
     count = cur.fetchone()
@@ -163,7 +162,6 @@ def create_doc_table(data):
 ##附件2
     db = pymysql.connect(host = '192.168.75.128', port=3306, user = 'zhangbo', password = '22', database = 'testdb')
     cur = db.cursor()
-    #sql = """select * from 3k where unit='潍坊市交通运输局' and host='10.80.13.62' order by system,host"""
     sql = """select * from 3k where unit='{}' order by system,host""".format(data[0][0])
     cur.execute(sql)
     data = cur.fetchall()
@@ -171,7 +169,6 @@ def create_doc_table(data):
     db.close()
 
     rows=len(data)+4
-    # 创建一个新的Word文档
 
     head = doc.add_heading(level=3)
     run = head.add_run('附件2')
@@ -193,7 +190,7 @@ def create_doc_table(data):
 
     # col1 = table.columns[0]
     # col1.width = Inches(1.3)
-    # 添加一个4列10行的表格
+    # 添加一个4列rows行的表格
     table = doc.add_table(rows=rows, cols=4,style="Table Grid")
     table.autofit = False
     table.allow_autofit = False
@@ -285,7 +282,6 @@ def create_doc_table(data):
     run1._element.rPr.rFonts.set(qn('w:eastAsia'), u'仿宋')
     run1.font.size = Pt(14)
     run1.font.bold = False
-    # 保存文档
 
     # for i in range(len(data)):
     #     print(data[i])
@@ -311,12 +307,9 @@ def create_doc_table(data):
     doc.save(new_doc_name)
 
 
-#create_doc_table()
-
 def getFromMysql(unit):
     db = pymysql.connect(host = '192.168.75.128', port=3306, user = 'zhangbo', password = '22', database = 'testdb')
     cur = db.cursor()
-    #sql = """select * from 3k where unit='潍坊市交通运输局' and host='10.80.13.62' order by system,host"""
     sql = """select * from 3k where unit='{}' order by system,host""".format(unit)
     cur.execute(sql)
     data = cur.fetchall()
@@ -367,9 +360,7 @@ def replace_placeholder(doc, params):
                     if ph in run.text:
                         run.text = run.text.replace(ph, pv)
                         run.italic = False
-# unit='潍坊市交通运输局'
-#
-# create_doc_table(getFromMysql(unit))
+
 
 def getUnit():
     db = pymysql.connect(host = '192.168.75.128', port=3306, user = 'zhangbo', password = '22', database = 'testdb')
