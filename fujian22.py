@@ -10,12 +10,11 @@ from docx.oxml.ns import qn
 from docx.shared import Cm,Inches
 import pymysql
 
-unit="市水利局"
+unit="水利局"
 
 def fujian2(unit):
     db = pymysql.connect(host = '192.168.75.128', port=3306, user = 'zhangbo', password = '22', database = 'testdb')
     cur = db.cursor()
-    #sql = """select * from 3k where unit='潍坊市交通运输局' and host='10.80.13.62' order by system,host"""
     sql = """select * from 3k where unit='{}' order by system,host""".format(unit)
     cur.execute(sql)
     data = cur.fetchall()
