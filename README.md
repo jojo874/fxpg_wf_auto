@@ -6,7 +6,7 @@
 pip3 install -r requirements.txt
 
 ### 使用说明:
-搭建mysql数据库,导入数据库结构3k.sql,导入相关数据,run.py修改数据库连接信息,python3 run.py,输出文档到根目录
+搭建mysql数据库,导入数据库结构3k.sql,导入相关数据,run.py修改数据库连接信息,python3 run.py, 脚本会根据数据库中的导入的数据自动生成附件1和附件2,然后生成文档到根目录
 
 ### 模版文件:
 + 2023_2.docx,根据情况自行修改.
