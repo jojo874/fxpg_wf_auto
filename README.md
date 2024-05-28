@@ -1,6 +1,7 @@
 # fxpg_wf_auto
 ### 软件架构
-?
+python
+mysql
 
 ### 安装教程
 pip3 install -r requirements.txt
